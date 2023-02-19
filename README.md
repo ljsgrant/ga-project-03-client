@@ -8,7 +8,9 @@ TheForum is a full-stack social media application built using the MERN stack. It
 
 ### Deployed project link: https://louis-theforum.netlify.app/
 
-### API Repository: https://github.com/ljsgrant/ga-project-03-api/
+The app uses our own REST API. Its repository can be found here: https://github.com/ljsgrant/ga-project-03-api/
+
+![landing page](/readme_assets/landing.png)
 
 <br/>
 
@@ -90,7 +92,7 @@ Connected to mongodb 🤖
 Up and running on port 8080
 ```
 
-### Client
+### Client:
 * Clone the repository
 * In the terminal, navigate into the project directory
 * Run `npm install` in the terminal to install packages
@@ -157,15 +159,16 @@ We began by planning our apps. We discussed how to structure our endpoints and m
 * Users should be able to make and view posts
 * Users should be able to comment on posts
 
-
-
-
-
+![initial planning in excalidraw](/readme_assets/project-3-planning-all.png)
 
 <br/>
 
 ### Wireframing
 Once we were satisfied with our idea, we worked up wireframes for our main pages, identifying which components we’d need to build for each:
+
+![register wireframe](/readme_assets/project-3-wireframe-register.png)
+![home wireframe](/readme_assets/project-3-wireframe-landing.png)
+![all posts wireframe](/readme_assets/project-3-wireframe-allposts.png)
 
 [&#9650; _Back to contents_](#contents)
 
@@ -174,7 +177,7 @@ Once we were satisfied with our idea, we worked up wireframes for our main pages
 ### Organisation
 Finally, we added components and functionality to a Trello board, which allowed us to track features and assign tickets throughout the project, and we stayed in touch throughout the workday via Zoom calls and Slack, making a point of communicating when features were finished and when we were starting work on something new. This helped us to avoid blocking each other and, vitally, to avoid merge conflicts arising from two people working on the same component. 
 
-
+![our trello board for the project](/readme_assets/project-3-trello.png)
 
 [&#9650; _Back to contents_](#contents)
 
@@ -217,6 +220,9 @@ And an `onSubmit`, which calls async function `handleSubmit()` to make a POST re
     }
   };
 ```
+
+![register page](/readme_assets/project-3-register.png)
+![login page](/readme_assets/project-3-login.png)
 
 [&#9650; _Back to contents_](#contents)
 
@@ -315,7 +321,9 @@ return (
                 imageWidth={30}
                 imageHeight={30}
               />
+```
 … (partially omitted for sake of length) …
+```js
 {comments?.map((comment) => {
             return (
               <CommentCard
@@ -340,6 +348,8 @@ return (
 ```
 
 This means that whenever a comment is rendered, we recursively render any of its descendents. To test this in the browser, I made a placeholder route to render a single comment thread, and added some basic styling. The recursive component has the bonus of making styling really simple – we can just give each comment a `margin-left` of whatever we want, and each child will be indented relative to its parent:
+
+![nested comments - work in progress](/readme_assets/project-3-wip-comments-main.png)
 
 [&#9650; _Back to contents_](#contents)
 
@@ -462,6 +472,8 @@ Alice worked on the components to create and edit posts, and added functionality
 
 Parul had added UI elements for likes and dislikes using MUI icons, in a reusable component. I then worked on adding this to posts, connecting it to the API, and building out a system to handle liking and disliking on the back-end.
 
+Functionality shown here in the deployed app:
+![liking and disliking posts](/readme_assets/project-3-likes-dislikes.gif)
 
 <br/>
 
@@ -611,6 +623,8 @@ As posts ids are also referenced in the user schema, I then needed to add some l
 
 Finally I needed to show the post as deleted in the UI. I added a boolean, `isPostDeleted`, which is initialised as `false` and becomes `true` when we delete a post. If `isPostDeleted === true`, we render a “post was deleted” message instead of the normal return of the display post component:
 
+![deleted post message](/readme_assets/project-3-post-deleted.png)
+
 [&#9650; _Back to contents_](#contents)
 
 <br/>
@@ -695,7 +709,9 @@ By the deadline I had only managed to get the back end set up for this, so addin
 ## Wins
 * Our one merge conflict aside, we worked really well as a team, and communicated well about what features we wanted to build, effectively delegating responsibilities so we were each working to our strengths. I’m particularly happy with how we discussed the behaviour of features such as deleting comments, reaching a solution as a team before resuming work on our individual tasks.
 * I’m personally really happy with the like/dislike functionality – although the nested conditionals aren’t massively concise, I think the functionality works really intuitively from a design perspective.
-* Less seriously, I love how the joke of the overbearing forum administrator developed over time, largely thanks to Alice’s great sense of humour. The passive-aggressive messages from the admin, contrasting with the corporate styling of the site, are a fun comedic touch.
+* Less seriously, I love how the joke of the overbearing forum administrator developed over time, largely thanks to Alice’s great sense of humour. The passive-aggressive messages from the admin, contrasting with the minimal, somewhat corporate styling of the site, are a fun comedic touch.
+
+![a message from the administrator](/readme_assets/new-post-admin-message.gif)
 
 [&#9650; _Back to contents_](#contents)
 
