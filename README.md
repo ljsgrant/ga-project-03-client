@@ -78,7 +78,7 @@ The brief was to:
 
 ---
 
-## CODE INSTALLATION
+## Code Installation
 
 ### API:
 * Clone [the API repository](https://github.com/ljsgrant/ga-project-03-api)
