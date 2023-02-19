@@ -16,7 +16,38 @@ TheForum is a full-stack social media application built using the MERN stack. It
 
 ## Contents
 
-Coming soon
+- **[Brief](#brief)**
+- **[Installation Requirements](#installation-requirements)**
+- **[Code Installation](#code-installation)**
+- **[Timeframe & Team](#timeframe--team)**
+- **[Technologies Used](#technologies-used)**
+
+**[Development Process Write-Up:](#development-process-write-up)**
+* **[Planning](#planning)**
+  * [Wireframing](#wireframing)
+  * [Organisation](#organisation)
+* **[Programming](#programming)**
+  * [Register and Login Components](#register-and-login-components)
+  * [Nested Comments](#nested-comments)
+    * [In the API](#in-the-api)
+    * [In the Front-End](#in-the-front-end)
+    * [Limiting Comment Thread Depth](#limiting-comment-thread-depth)
+    * [Re-Rendering the Page for Comments](#re-rendering-the-page-for-comments)
+    * [Deleting Comments](#deleting-comments)
+    * [Profile Pictures on Comments](#profile-pictures-on-comments)
+  * [Liking/Disliking Posts](#likingdisliking-posts)
+    * [Request from the Client](#request-from-the-client)
+    * [Handling the Request in the API](#handling-the-request-in-the-api)
+    * [Styling the Like/Dislike Buttons](#styling-the-likedislike-buttons)
+  * [Deleting Posts](#deleting-posts)
+  * [Editing Posts](#editing-posts)
+  * [Toggle Between Edited & Original Post](#toggle-between-edited--original-post)
+  * [Back-End Notifications](#back-end-notifications)
+* **[Challenges](#challenges)**
+* **[Wins](#wins)**
+* **[Key Learnings/Takeaways](#key-learningstakeaways)**
+* **[Bugs](#bugs)**
+* **[Future Improvements](#future-improvements)**
 
 <br />
 
@@ -28,6 +59,8 @@ The brief was to:
 
 > Build a full stack app using MongoDB, Express, React and Node.js, with full CRUD functionality and multiple schemas. The functionalities and design are for the team to decide on.
 
+[&#9650; _Back to contents_](#contents)
+
 <br/>
 
 ---
@@ -36,6 +69,8 @@ The brief was to:
 
 ### API:
 * MongoDB Community
+
+[&#9650; _Back to contents_](#contents)
 
 <br/>
 
@@ -64,6 +99,8 @@ Up and running on port 8080
 * In your browser, navigate to http://localhost:3000
 * Engage in riveting discussions with other users. Often centred around the tyrannical forum administrator.
 
+[&#9650; _Back to contents_](#contents)
+
 <br/>
 
 ---
@@ -73,6 +110,8 @@ A 5 day project in a 3 person team:
 * [Louis Grant](https://github.com/ljsgrant/) (me)
 * [Alice Lo](https://github.com/siuusunn)
 * [Parul Singh](https://github.com/ParulSingh16/)
+
+[&#9650; _Back to contents_](#contents)
 
 <br/>
 
@@ -97,6 +136,8 @@ A 5 day project in a 3 person team:
 * Postman
 * mongosh
 * Chrome DevTools
+
+[&#9650; _Back to contents_](#contents)
 
 <br/>
 
@@ -126,7 +167,7 @@ We began by planning our apps. We discussed how to structure our endpoints and m
 ### Wireframing
 Once we were satisfied with our idea, we worked up wireframes for our main pages, identifying which components we’d need to build for each:
 
-
+[&#9650; _Back to contents_](#contents)
 
 <br/>
 
@@ -135,7 +176,7 @@ Finally, we added components and functionality to a Trello board, which allowed 
 
 
 
-
+[&#9650; _Back to contents_](#contents)
 
 <br/>
 
@@ -146,6 +187,8 @@ Finally, we added components and functionality to a Trello board, which allowed 
 On day 1, after the planning stage, we began to build out the basics of our API, dividing the workload via our Trello board. I worked on the posts and comments schemas as well as the comments controller, and researched options for how to handle nested comments.
 
 In the morning of day 2, we worked on some fixes to the back end, and tested our endpoints in Postman. Once we were satisfied everything was working, we got started on the front end. 
+
+[&#9650; _Back to contents_](#contents)
 
 <br/> 
 
@@ -175,7 +218,7 @@ And an `onSubmit`, which calls async function `handleSubmit()` to make a POST re
   };
 ```
 
-
+[&#9650; _Back to contents_](#contents)
 
 <br/>
 
@@ -253,6 +296,8 @@ const post = await PostModels.Post.findById(req.params.id).populate([
 
 …and so on. Using a recursive function to populate down to a depth specified would probably be the neater way of achieving this, but for the moment it does the job. 
 
+[&#9650; _Back to contents_](#contents)
+
 <br/>
 
 #### In the Front-End
@@ -296,6 +341,7 @@ return (
 
 This means that whenever a comment is rendered, we recursively render any of its descendents. To test this in the browser, I made a placeholder route to render a single comment thread, and added some basic styling. The recursive component has the bonus of making styling really simple – we can just give each comment a `margin-left` of whatever we want, and each child will be indented relative to its parent:
 
+[&#9650; _Back to contents_](#contents)
 
 <br/>
 
@@ -334,6 +380,8 @@ And limit the depth of the thread based on the `replyThreadDepthLimit` const:
 > #### **Note**:
 > One final bit of functionality I need to add in here is for each comment to only show its post-a-reply UI if its `replyThreadDepth` is less than the `replyThreadDepthLimit`.
 
+[&#9650; _Back to contents_](#contents)
+
 <br/>
 
 #### Re-rendering the Page for Comments
@@ -359,6 +407,8 @@ To get the page to re-render if the user posts, edits or deletes a comment, I ma
   }, [id, isContentUpdated, isPostDeleted]);
 ```
 
+[&#9650; _Back to contents_](#contents)
+
 <br/>
 
 #### Deleting Comments
@@ -378,6 +428,8 @@ const updatedComment = await comment.updateOne({
 ```
 
 I was concerned about potentially leaving a lot of essentially blank data in the db, but after talking it through with a developer friend who advised me that “unused data is usually a much smaller problem than it feels like it is”, I decided the tradeoff was worth it for maintaining the comment thread structure.
+
+[&#9650; _Back to contents_](#contents)
 
 <br/>
 
@@ -399,6 +451,8 @@ Alice worked on the components to create and edit posts, and added functionality
            )}
          </div>
 ```
+
+[&#9650; _Back to contents_](#contents)
 
 <br/>
 
@@ -431,6 +485,8 @@ We decided the best way to handle likes for a post would be through a PUT reques
 ```
 
 I use `setIsContentUpdated` and `setPostsUpdated` here to trigger `useEffect` hooks both for the post component and in the PostsIndex, which will GET the updated post from the API, with the updated like and dislike count, so the counts will re-render whenever the user interacts with the buttons.
+
+[&#9650; _Back to contents_](#contents)
 
 <br/>
 
@@ -480,6 +536,8 @@ if (req.body.likeOrDislike) {
      return res.status(200).json(updatedPost);
 ```
 
+[&#9650; _Back to contents_](#contents)
+
 <br/>
 
 #### **Styling the like/dislike buttons**
@@ -510,6 +568,8 @@ I added two styles of the icons from MUI, one filled and one outlined - as well
            {`${storedDislikes}`}
          </Button>
 ```
+
+[&#9650; _Back to contents_](#contents)
 
 <br/>
 
@@ -551,6 +611,7 @@ As posts ids are also referenced in the user schema, I then needed to add some l
 
 Finally I needed to show the post as deleted in the UI. I added a boolean, `isPostDeleted`, which is initialised as `false` and becomes `true` when we delete a post. If `isPostDeleted === true`, we render a “post was deleted” message instead of the normal return of the display post component:
 
+[&#9650; _Back to contents_](#contents)
 
 <br/>
 
@@ -561,6 +622,7 @@ In the DisplayPost component, I then conditionally render the delete post & edit
 
 I also went back & added similar functionality to comments, so users can only see the option to reply or delete if they’re logged in, and can only delete if they’re the comment owner.
 
+[&#9650; _Back to contents_](#contents)
 
 <br/>
 
@@ -590,6 +652,8 @@ if (!post.isEdited) {
 
 (Another way of handling this – if we wanted to allow the post to be edited more than once but still limit the edits – would be to increment an `editCount` variable and instead check against a `maxEdits` const to limit to however many edits we want above 1.)
 
+[&#9650; _Back to contents_](#contents)
+
 <br/>
 
 ### Back-End notifications
@@ -613,12 +677,16 @@ I then made an `accountNotificationsController` to create a notification when a 
 
 By the deadline I had only managed to get the back end set up for this, so adding the functionality in to the front end will have to be a side project stretch goal!
 
+[&#9650; _Back to contents_](#contents)
+
 <br/>
 
 ---
 
 ## Challenges
 * Early on we had one major merge conflict, which came from Parul and I working on the same component, and writing some similar but subtly different functionality to support the features we were each working on. This stalled us briefly while we worked on resolving the conflict and made sure the functionality we’d both built was integrated and working properly. Although this was a bit nerve-racking at the time, it was ultimately useful for teaching us (fairly viscerally) the importance of triple-checking which components we were all working on before starting a new feature, as well as being good experience of resolving a tricky merge conflict. Thanks to this, we learned from our mistakes and had no further conflicts for the rest of the project.
+
+[&#9650; _Back to contents_](#contents)
 
 <br/>
 
@@ -629,6 +697,8 @@ By the deadline I had only managed to get the back end set up for this, so addin
 * I’m personally really happy with the like/dislike functionality – although the nested conditionals aren’t massively concise, I think the functionality works really intuitively from a design perspective.
 * Less seriously, I love how the joke of the overbearing forum administrator developed over time, largely thanks to Alice’s great sense of humour. The passive-aggressive messages from the admin, contrasting with the corporate styling of the site, are a fun comedic touch.
 
+[&#9650; _Back to contents_](#contents)
+
 <br/>
 
 ---
@@ -638,6 +708,8 @@ By the deadline I had only managed to get the back end set up for this, so addin
 * Using mongosh to view data on the database is a lifesaver, much easier than trying to use a half-finished site or query via Postman – and also can be useful for troubleshooting the above point also. I grew to love having mongosh open in a terminal whilst working, to let me quickly check something in the database.
 * Planning the back end: although I knew the theory for why this is important, we ran into a few unforeseen issues with how we’d restructured our schemas and endpoints that required some tweaking. I chalk some of this up to this being our first experience with building a full-stack application, and luckily our planning, separation of concerns and good communication whilst working helped us swiftly resolve issues as they came up. I feel like I’ve learned a huge amount about how to plan apps and data structures from this project. 
 
+[&#9650; _Back to contents_](#contents)
+
 <br/>
 
 ---
@@ -646,7 +718,9 @@ By the deadline I had only managed to get the back end set up for this, so addin
 Most of our bugs are down to half-finished stretch-goal functionality, and so the site could be polished up by removing the unfinished elements. For the sake of presenting our in-progress functionality at the end of the project, we left some of these in:
 * We didn’t get around to connecting the UI for liking comments to the API, so currently the like and dislike count for a comment shows as undefined.
 * Similarly for the sort buttons at the top of the post index – we didn’t get round to building in this functionality by the deadline, and the buttons should be removed for now.
-* Comments will currently show the option to post a reply even if they’re at the replyThreadDepthLimit. The solution would be to have the CommentCard get the limit from the API, checking if the current comment replyThreadDepth equals the replyDepthThreadLimit, and then conditionally rendering the post-a-reply UI.
+* Comments will currently show the option to post a reply even if they’re at the `replyThreadDepthLimit`. The solution would be to have the CommentCard get the limit from the API, checking if the current comment `replyThreadDepth` equals the `replyDepthThreadLimit`, and then conditionally rendering the post-a-reply UI.
+
+[&#9650; _Back to contents_](#contents)
 
 <br/>
 
@@ -655,3 +729,5 @@ Most of our bugs are down to half-finished stretch-goal functionality, and so th
 ## Future Improvements
 * Fixes for the above issues.
 * Finishing off the account notification functionality and implementing in the front-end.
+
+[&#9650; _Back to contents_](#contents)
