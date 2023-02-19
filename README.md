@@ -1,6 +1,6 @@
 # SEI Project 3: The Forum (full stack web app)
 
-## Description & Deployed Project
+## Introduction & Deployed Project
 
 TheForum is a full-stack social media application built using the MERN stack. Its functionality is loosely modelled on Reddit: users can make posts, edit and delete their posts, comment on posts, reply to comments, and view other users’ profile pages. It has secure registration and login using JSON Web Token, and handles profile pictures via Cloudinary.
 
@@ -104,8 +104,8 @@ Up and running on port 8080
 
 - Clone this repository
 - In the terminal, navigate into the project directory
-- Run `npm install` in the terminal to install packages
-- Run `npm start` in the terminal to start the development server
+- Run `npm install` to install packages
+- Run `npm start` to start the development server
 - Make sure both the API and the Client are running
 - In your browser, navigate to http://localhost:3000
 - Engage in riveting discussions with other users. Often centred around the tyrannical forum administrator.
