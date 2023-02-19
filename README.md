@@ -2,7 +2,7 @@
 
 ## Introduction & Deployed Project
 
-TheForum is a full-stack social media application built using the MERN stack. Its functionality is loosely modelled on Reddit: users can make posts, edit and delete their posts, comment on posts, reply to comments, and view other users’ profile pages. It has secure registration and login using JSON Web Token, and handles profile pictures via Cloudinary.
+TheForum is a full-stack social media application built using the MERN stack. Its functionality is loosely modelled on sites similar to Reddit: users can make posts, edit and delete their posts, comment on posts, reply to comments, and view other users’ profile pages. The app has secure registration and login using JSON Web Token, and handles profile pictures via Cloudinary.
 
 ### Deployed project: https://louis-theforum.netlify.app/
 
@@ -15,6 +15,7 @@ TheForum is a full-stack social media application built using the MERN stack. It
 #### **API GitHub repository** can be found here: https://github.com/ljsgrant/ga-project-03-api/
 
 #### **API Endpoints:**
+
 - All posts: https://louis-theforum.herokuapp.com/api/posts
 - Single post by ID: https://louis-theforum.herokuapp.com/api/posts/:id
 - Comments for post ID: https://louis-theforum.herokuapp.com/api/posts/:id/comments
