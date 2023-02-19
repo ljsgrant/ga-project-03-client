@@ -14,7 +14,7 @@ The app uses our own REST API. Its repository can be found here: https://github.
 
 <br/>
 
----
+
 
 ## Contents
 
@@ -53,7 +53,7 @@ The app uses our own REST API. Its repository can be found here: https://github.
 
 <br />
 
----
+
 
 ## Brief
 
@@ -65,7 +65,7 @@ The brief was to:
 
 <br/>
 
----
+
 
 ## Installation Requirements
 
@@ -76,7 +76,7 @@ The brief was to:
 
 <br/>
 
----
+
 
 ## Code Installation
 
@@ -105,7 +105,7 @@ Up and running on port 8080
 
 <br/>
 
----
+
 
 ## Timeframe & Team
 A 5 day project in a 3 person team:
@@ -117,7 +117,7 @@ A 5 day project in a 3 person team:
 
 <br/>
 
----
+
 
 ## Technologies Used
 
@@ -143,14 +143,14 @@ A 5 day project in a 3 person team:
 
 <br/>
 
----
+
 
 # Development Process Write-Up
 Covering some of the specifics of our build process and my responsibilities.
 
 <br/>
 
----
+
 
 ## Planning
 
@@ -183,7 +183,7 @@ Finally, we added components and functionality to a Trello board, which allowed 
 
 <br/>
 
----
+
 
 ## Programming
 
@@ -695,7 +695,7 @@ By the deadline I had only managed to get the back end set up for this, so addin
 
 <br/>
 
----
+
 
 ## Challenges
 * Early on we had one major merge conflict, which came from Parul and I working on the same component, and writing some similar but subtly different functionality to support the features we were each working on. This stalled us briefly while we worked on resolving the conflict and made sure the functionality we’d both built was integrated and working properly. Although this was a bit nerve-racking at the time, it was ultimately useful for teaching us (fairly viscerally) the importance of triple-checking which components we were all working on before starting a new feature, as well as being good experience of resolving a tricky merge conflict. Thanks to this, we learned from our mistakes and had no further conflicts for the rest of the project.
@@ -704,7 +704,7 @@ By the deadline I had only managed to get the back end set up for this, so addin
 
 <br/>
 
----
+
 
 ## Wins
 * Our one merge conflict aside, we worked really well as a team, and communicated well about what features we wanted to build, effectively delegating responsibilities so we were each working to our strengths. I’m particularly happy with how we discussed the behaviour of features such as deleting comments, reaching a solution as a team before resuming work on our individual tasks.
@@ -717,7 +717,7 @@ By the deadline I had only managed to get the back end set up for this, so addin
 
 <br/>
 
----
+
 
 ## Key Learnings/Takeaways
 * Note to self - remember to reseed the db after making changes to the back-end, to remove database entries with a shape that no longer match the current schema. I got momentarily stumped several times by this throughout the project.
@@ -728,7 +728,7 @@ By the deadline I had only managed to get the back end set up for this, so addin
 
 <br/>
 
----
+
 
 ## Bugs
 Most of our bugs are down to half-finished stretch-goal functionality, and so the site could be polished up by removing the unfinished elements. For the sake of presenting our in-progress functionality at the end of the project, we left some of these in:
@@ -740,7 +740,7 @@ Most of our bugs are down to half-finished stretch-goal functionality, and so th
 
 <br/>
 
----
+
 
 ## Future Improvements
 * Fixes for the above issues.
