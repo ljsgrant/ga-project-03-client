@@ -242,7 +242,7 @@ And an `onSubmit`, which calls async function `handleSubmit()` to make a POST re
 
 ### Nested Comments
 
-#### In the API
+#### **In the API**
 
 I began by working on our post and comment schemas and controllers in the API, so that comment ids are added to an array on their parent, so we can get all the children of any post or comment. Later I went back and updated this so each comment also stores a reference to its parent’s ID, so we can get the parent and update its array of child comments if a comment is deleted:
 
@@ -319,7 +319,7 @@ const post = await PostModels.Post.findById(req.params.id).populate([
 
 <br/>
 
-#### In the Front-End
+#### **In the Front-End**
 
 To get comments showing in the front end, I built a recursive CommentCard component, which checks to see if the current comment has any replies, and then iterates over them with `Array.map()`, rendering them as child elements:
 
@@ -371,7 +371,7 @@ This means that whenever a comment is rendered, we recursively render any of its
 
 <br/>
 
-#### Limiting Comment Thread Depth
+#### **Limiting Comment Thread Depth**
 
 After considering the nested population above, I raised the question of what “depth” we should allow comment threads to reach - i.e. how to handle replies to replies (as opposed to comments whose parent is a post, rather than another comment). If we allowed threads of infinite depth, they could become hard to navigate and break the UI as they have less and less width available. One option was to disallow replies to replies, but we liked the nested structure and being able to see the shape of an ongoing discussion rather than users just shouting isolated responses to a post.
 
@@ -411,7 +411,7 @@ if (parent.replyThreadDepth === replyThreadDepthLimit) {
 
 <br/>
 
-#### Re-rendering the Page for Comments
+#### **Re-rendering the Page for Comments**
 
 To get the page to re-render if the user posts, edits or deletes a comment, I made some state for `isContentUpdated`, which is initialised as false. Props for `setIsContentUpdated` are passed down to the CommentCard component, and is set to true whenever a comment is added, edited or deleted. This then triggers the `useEffect` hook in the post viewer, to fetch the updated post and its children from the API, and re-render the page with the new updates. Finally, the `useEffect` sets `isContentUpdated` back to false:
 
@@ -438,7 +438,7 @@ useEffect(() => {
 
 <br/>
 
-#### Deleting Comments
+#### **Deleting Comments**
 
 Working out how to delete comments in a way that worked for their nested structure was tricky. We felt users would like to still be able to see replies if a comment higher up the chain was deleted, and if we delete a comment completely then the references to its children will disappear, meaning we will no longer get any of its descendents. Therefore after some discussion, we decided it was best to leave a “deleted” comment in place but wipe its content and the reference to who posted it, whilst preserving the references to its children:
 
@@ -460,7 +460,7 @@ I was concerned about potentially leaving a lot of essentially blank data in the
 
 <br/>
 
-#### Profile Pictures on Comments
+#### **Profile Pictures on Comments**
 
 Alice worked on the components to create and edit posts, and added functionality to add profile pictures using Cloudinary. I then added her ProfilePicture component to the CommentCard to implement users’ profile pictures showing next to their comment, and I used a ternary to display a blank placeholder image if the image is missing or the comment has been deleted:
 
