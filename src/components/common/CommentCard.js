@@ -101,7 +101,7 @@ export default function CommentCard({
                 imageWidth={30}
                 imageHeight={30}
               />
-            ) : ( 
+            ) : (
               <img src={blankPic} alt='blank profile avatar' />
             )}
           </div>

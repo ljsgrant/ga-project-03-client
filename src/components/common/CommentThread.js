@@ -4,7 +4,8 @@ import '../../styles/CommentThread.scss';
 export default function CommentThread({
   comments,
   setIsContentUpdated,
-  setPostsUpdated, userData
+  setPostsUpdated,
+  userData
 }) {
   return (
     <>
