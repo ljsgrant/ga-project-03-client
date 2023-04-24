@@ -1,6 +1,11 @@
 .SinglePost {
   height: 100vh;
   overflow-y: scroll;
+  a {
+    &:hover {
+      color: rgb(38, 123, 214);
+    }
+  }
 
   .spinner-container {
     display: flex;
@@ -15,6 +20,17 @@
   .original-content {
     color: white;
     background-color: grey;
+  }
+  .post-info {
+    display: flex;
+    align-items: center;
+    a {
+      margin: 0px 3px;
+      font-weight: bold;
+      text-decoration: underline;
+      &:hover {
+      }
+    }
   }
   .notify-if-edited {
     color: red;
@@ -68,7 +84,7 @@
   .comments-container {
     display: flex;
     flex-direction: column;
-    .submit-comment-button{
+    .submit-comment-button {
       margin-top: 5px;
     }
   }

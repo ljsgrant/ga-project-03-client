@@ -201,12 +201,15 @@ export const DisplayPost = ({ id, setPostsUpdated, userData }) => {
                   <p>{singlePost?.content}</p>
                 )}
               </Paper>
-
-              <p>
-                Posted by: {singlePost?.addedBy.username} on{' '}
-                <i>{`${humanDate}`}</i>
-              </p>
-
+              <div>
+                <p className='post-info'>
+                  Posted by:{' '}
+                  <Link to={`/profile/${singlePost?.addedBy._id}`}>
+                    <p className='username'>{singlePost?.addedBy.username}</p>
+                  </Link>{' '}
+                  on {` ${humanDate}`}
+                </p>
+              </div>
               <div className='likes-postactions-container'>
                 <div className='likes-container-outer'>
                   <div className='likes-container-inner'>
@@ -287,7 +290,11 @@ export const DisplayPost = ({ id, setPostsUpdated, userData }) => {
                           value={newCommentFormFields.text}
                           onChange={handleNewCommentChange}
                         ></TextField>
-                        <Button className='submit-comment-button' variant='contained' type='submit'>
+                        <Button
+                          className='submit-comment-button'
+                          variant='contained'
+                          type='submit'
+                        >
                           Post Comment
                         </Button>
                         {/* <button type='submit'>Post Comment</button> */}
