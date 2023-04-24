@@ -37,17 +37,28 @@
     border-left: 2px solid lightgray;
     margin-left: 15px;
     margin-top: -10px;
-    padding: 5px;
+    padding: 5px 5px 0px 5px;
     .comment-content{
       margin-left: 20px;
       margin-bottom: 20px;
+      background-color: white;
+      filter: drop-shadow(5px 5px 5px lightgray);
+      border-radius: 10px;
       .comment-text{
         background-color: rgb(244, 244, 244);
         padding: 5px;
-        border-radius: 5px;
+        border-radius: 10px 10px 0px 0px;
+      }
+      .comment-actions{
+        border: .5px solid rgb(244, 244, 244);
+        border-top: none;
+        border-radius: 0px 0px 10px 10px;
+        padding: 2px 10px;
       }
     }
-    .comment-actions {
+    .delete-reply {
+      display:flex;
+      align-items: center;
       margin: 3px 0px;
       display: flex;
       flex-direction: row;
@@ -56,6 +67,7 @@
       }
       input {
         margin-right: 2px;
+        height: 100%;
       }
     }
   }

@@ -23,6 +23,7 @@ export default function CommentThread({
             isDeleted={comment.isDeleted}
             deletedComments={comment.deletedComments}
             parentCommentId={comment.parentCommentId}
+            replyThreadDepth={comment.replyThreadDepth}
             commentId={comment._id}
             timePosted={comment.createdAt}
             setIsContentUpdated={setIsContentUpdated}

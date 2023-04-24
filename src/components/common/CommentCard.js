@@ -9,8 +9,10 @@ import { NOTIFY } from '../../lib/notifications';
 import ProfilePicture from './ProfilePicture';
 import '../../styles/CommentCard.scss';
 import blankPic from '../../assets/placeholder-profile-picture.png';
-
 import { CommentLikes } from './CommentLikes';
+
+import { Button } from '@mui/material';
+import { Delete, Send } from '@mui/icons-material';
 
 export default function CommentCard({
   text,
@@ -26,6 +28,7 @@ export default function CommentCard({
   userId,
   timePosted,
   userData,
+  replyThreadDepth,
   parentCommentId
 }) {
   const [isLoggedIn] = useAuthenticated();
@@ -122,39 +125,56 @@ export default function CommentCard({
           {!isDeleted && (
             <div className='comment-content'>
               <p className='comment-text'>{text}</p>
-              {username && (
-                <p>
-                  {/* Likes: {likes}, Dislikes: {dislikes} */}
-                  <CommentLikes
-                    storedLikes={likes}
-                    storedDislikes={dislikes}
-                    id={commentId}
-                    setIsContentUpdated={setIsContentUpdated}
-                    setPostsUpdated={setPostsUpdated}
-                    userData={userData}
-                    isButtonDisabled={false}
-                  />
-                </p>
-              )}
-              {username && isLoggedIn && (
-                <div className='comment-actions'>
-                  {(AUTH.isOwner(userId) || AUTH.getPayload().isAdmin) && (
-                    <button onClick={handleDeleteComment}>Delete</button>
-                  )}
-                  <form onSubmit={handleReplySubmit}>
-                    <label htmlFor='comment-text'> Reply: </label>
-                    <input
-                      ref={formInput}
-                      type='text'
-                      id='comment-text'
-                      name='text'
-                      value={newReplyFormFields.text}
-                      onChange={handleNewReplyChange}
-                    ></input>
-                    <button type='submit'>Post reply</button>
-                  </form>
-                </div>
-              )}
+              <div className='comment-actions'>
+                <CommentLikes
+                  storedLikes={likes}
+                  storedDislikes={dislikes}
+                  id={commentId}
+                  setIsContentUpdated={setIsContentUpdated}
+                  setPostsUpdated={setPostsUpdated}
+                  userData={userData}
+                  isButtonDisabled={false}
+                />
+                {isLoggedIn && (
+                  <div className='delete-reply'>
+                    {(AUTH.isOwner(userId) || AUTH.getPayload().isAdmin) && (
+                      <Button
+                        onClick={handleDeleteComment}
+                        variant='contained'
+                        color='error'
+                        size='small'
+                        endIcon={<Delete />}
+                      >
+                        Delete
+                      </Button>
+                      // <button onClick={handleDeleteComment}>Delete</button>
+                    )}
+
+                    {replyThreadDepth < 6 && (
+                      <form onSubmit={handleReplySubmit}>
+                        <label htmlFor='comment-text'> Reply: </label>
+                        <input
+                          ref={formInput}
+                          type='text'
+                          id='comment-text'
+                          name='text'
+                          value={newReplyFormFields.text}
+                          onChange={handleNewReplyChange}
+                        ></input>
+                        <Button
+                          type='submit'
+                          variant='contained'
+                          size='small'
+                          endIcon={<Send />}
+                        >
+                          Post
+                        </Button>
+                        {/* <button type='submit'>Post reply</button> */}
+                      </form>
+                    )}
+                  </div>
+                )}
+              </div>
             </div>
           )}
           {comments?.map((comment) => {
@@ -172,6 +192,8 @@ export default function CommentCard({
                 commentId={comment._id}
                 timePosted={comment.createdAt}
                 setIsContentUpdated={setIsContentUpdated}
+                setPostsUpdated={setPostsUpdated}
+                replyThreadDepth={comment.replyThreadDepth}
               ></CommentCard>
             );
           })}

@@ -287,7 +287,10 @@ export const DisplayPost = ({ id, setPostsUpdated, userData }) => {
                           value={newCommentFormFields.text}
                           onChange={handleNewCommentChange}
                         ></TextField>
-                        <button type='submit'>Submit</button>
+                        <Button className='submit-comment-button' variant='contained' type='submit'>
+                          Post Comment
+                        </Button>
+                        {/* <button type='submit'>Post Comment</button> */}
                       </form>
                     </AccordionDetails>
                   </Accordion>

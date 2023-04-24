@@ -5,7 +5,7 @@ import ThumbDownOutlinedIcon from '@mui/icons-material/ThumbDownOutlined';
 import { Button, Box } from '@mui/material';
 import { API } from '../../lib/api';
 
-import '../../styles/PostLikes.scss';
+import '../../styles/CommentLikes.scss';
 
 export const CommentLikes = ({
   storedLikes,
@@ -45,7 +45,7 @@ export const CommentLikes = ({
   };
 
   return (
-    <Box className='PostLikes'>
+    <Box className='CommentLikes'>
       {isButtonDisabled ? (
         <>
           {userData?.likedComments?.includes(id) ? (
@@ -79,9 +79,16 @@ export const CommentLikes = ({
             sx={{ pt: padding, pb: padding, pl: padding }}
           >
             {userData?.dislikedComments?.includes(id) ? (
-              <ThumbDownIcon color='error' sx={{ height: iconSize }} />
+              <ThumbDownIcon
+                className='thumb-down-icon'
+                color='error'
+                sx={{ height: iconSize }}
+              />
             ) : (
-              <ThumbDownOutlinedIcon sx={{ height: iconSize }} />
+              <ThumbDownOutlinedIcon
+                className='thumb-down-icon'
+                sx={{ height: iconSize }}
+              />
             )}
             {`${storedDislikes}`}
           </Button>

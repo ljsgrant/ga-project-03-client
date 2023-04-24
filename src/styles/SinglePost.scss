@@ -68,5 +68,8 @@
   .comments-container {
     display: flex;
     flex-direction: column;
+    .submit-comment-button{
+      margin-top: 5px;
+    }
   }
 }

@@ -7,7 +7,7 @@ import { AUTH } from '../lib/auth';
 import { DisplayAllPosts } from './DisplayAllPosts';
 import DefaultLandingComponent from './DefaultLandingComponent';
 
-import { Box, Button } from '@mui/material';
+// import { Box, Button } from '@mui/material';
 
 import '../styles/PostsIndex.scss';
 
@@ -40,24 +40,22 @@ export default function PostsIndex() {
     setPostsUpdated(false);
   }, [postsUpdated]);
 
-  const sortNewestFirst = () => {};
+  // const sortNewestFirst = () => {};
 
-  const sortOldestFirst = () => {};
+  // const sortOldestFirst = () => {};
 
   const selectedId = (postId) => {
     setId(postId);
   };
 
   return (
-    <div
-      className='PostsIndex'
-    >
+    <div className='PostsIndex'>
       <div className='grid-left'>
         <>
-          <Box>
+          {/* <Box>
             <Button onClick={sortNewestFirst}>Sort by newest first</Button>
             <Button onClick={sortOldestFirst}>Sort by oldest first</Button>
-          </Box>
+          </Box> */}
           {posts?.map((post) => (
             <DisplayAllPosts
               key={post._id}
