@@ -1,8 +1,5 @@
-import { useEffect, useState } from 'react';
-import { API } from '../lib/api';
-import { Grid, Paper, styled, Box } from '@mui/material';
+import { Paper, styled, Box } from '@mui/material';
 import { PostLikes } from './common/PostLikes';
-import { SinglePost } from './SinglePost';
 import moment from 'moment/moment';
 
 import '../styles/DisplayPosts.scss';

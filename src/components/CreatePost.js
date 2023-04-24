@@ -32,7 +32,6 @@ export default function CreatePost() {
 
   const handleTick = (e) => {
     setTick(!tick);
-    console.log(tick);
   };
 
   const handleSubmit = (e) => {

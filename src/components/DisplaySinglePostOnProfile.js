@@ -3,11 +3,7 @@ import { useEffect, useState } from 'react';
 import { API } from '../lib/api';
 
 import {
-  Card,
-  CardActions,
-  CardContent,
   Button,
-  Typography,
   Box,
   ListItem,
   ListItemText,
@@ -32,8 +28,6 @@ export default function PostCard({ postId }) {
     event.preventDefault();
     navigate(`/posts/${postData._id}`);
   };
-
-  // console.log(postData);
 
   const humanDate = new Date(postData?.createdAt).toLocaleDateString();
 

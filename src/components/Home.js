@@ -5,8 +5,7 @@ import {
   Paper,
   ImageList,
   ImageListItem,
-  ImageListItemBar,
-  Switch
+  ImageListItemBar
 } from '@mui/material';
 
 import '../styles/darkMode.scss';

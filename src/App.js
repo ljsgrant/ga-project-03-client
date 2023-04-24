@@ -20,8 +20,6 @@ window.Buffer = window.Buffer || require('buffer').Buffer;
 
 function App() {
   const [searchedPosts, setSearchedPosts] = useState([]);
-
-  console.log({ searchedPosts });
   return (
     <div id='app' style={({ height: '100vh' }, { display: 'flex' })}>
       <Router>

@@ -1,14 +1,13 @@
 import { TextField, Stack, Autocomplete, Box } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { API } from '../../lib/api';
-import { useNavigate, Link } from 'react-router-dom';
 import { SearchOutlined } from '@mui/icons-material';
 
 export default function Search() {
   const [posts, setPosts] = useState([]);
   const [query, setQuery] = useState('');
+  /* eslint-disable-next-line */
   const [isOpen, setIsOpen] = useState(false);
-  const navigate = useNavigate();
 
   useEffect(() => {
     API.GET(API.ENDPOINTS.search(query)).then(({ data }) => {
@@ -33,8 +32,6 @@ export default function Search() {
     return clearup;
   }, []);
 
-  console.log(posts);
-
   return (
     <Stack spacing={2} sx={{ width: 300 }}>
       <Box
@@ -46,7 +43,7 @@ export default function Search() {
           freeSolo
           getOptionLabel={(option) => option.topic}
           options={posts?.map((option) => option)}
-          onChange={(event: any, option: any) => {
+          onChange={(event, option) => {
             window.location.href = `/posts/${option._id}`;
           }}
           renderInput={(params) => (

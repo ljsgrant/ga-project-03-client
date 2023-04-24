@@ -4,7 +4,6 @@ import Search from './common/Search';
 import { Container, Box, Avatar } from '@mui/material';
 
 const DefaultLandingComponent = () => {
-  console.log(adminPic);
 
   return (
     <Container maxWidth='sm' sx={{ mt: 15 }}>

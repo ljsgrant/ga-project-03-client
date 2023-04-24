@@ -7,7 +7,7 @@ import { API } from '../../lib/api';
 
 import '../../styles/PostLikes.scss';
 
-export const PostLikes = ({
+export const CommentLikes = ({
   storedLikes,
   storedDislikes,
   isButtonDisabled,
@@ -18,10 +18,9 @@ export const PostLikes = ({
   iconSize,
   padding
 }) => {
-
   const handleLike = async () => {
     API.PUT(
-      API.ENDPOINTS.singlePost(id),
+      API.ENDPOINTS.singleComment(id),
       { likeOrDislike: 'like' },
       API.getHeaders()
     )
@@ -34,7 +33,7 @@ export const PostLikes = ({
 
   const handleDislike = async () => {
     API.PUT(
-      API.ENDPOINTS.singlePost(id),
+      API.ENDPOINTS.singleComment(id),
       { likeOrDislike: 'dislike' },
       API.getHeaders()
     )
@@ -49,13 +48,13 @@ export const PostLikes = ({
     <Box className='PostLikes'>
       {isButtonDisabled ? (
         <>
-          {userData?.likedPosts?.includes(id) ? (
+          {userData?.likedComments?.includes(id) ? (
             <ThumbUpIcon color='success' sx={{ height: iconSize }} />
           ) : (
             <ThumbUpOutlinedIcon sx={{ height: iconSize }} />
           )}
           {`${storedLikes}`}
-          {userData?.dislikedPosts?.includes(id) ? (
+          {userData?.dislikedComments?.includes(id) ? (
             <ThumbDownIcon color='error' sx={{ height: iconSize }} />
           ) : (
             <ThumbDownOutlinedIcon sx={{ height: iconSize }} />
@@ -68,7 +67,7 @@ export const PostLikes = ({
             onClick={handleLike}
             sx={{ pt: padding, pb: padding, pl: padding }}
           >
-            {userData?.likedPosts?.includes(id) ? (
+            {userData?.likedComments?.includes(id) ? (
               <ThumbUpIcon color='success' sx={{ height: iconSize }} />
             ) : (
               <ThumbUpOutlinedIcon sx={{ height: iconSize }} />
@@ -79,7 +78,7 @@ export const PostLikes = ({
             onClick={handleDislike}
             sx={{ pt: padding, pb: padding, pl: padding }}
           >
-            {userData?.dislikedPosts?.includes(id) ? (
+            {userData?.dislikedComments?.includes(id) ? (
               <ThumbDownIcon color='error' sx={{ height: iconSize }} />
             ) : (
               <ThumbDownOutlinedIcon sx={{ height: iconSize }} />

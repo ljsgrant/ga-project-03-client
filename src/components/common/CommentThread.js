@@ -1,7 +1,11 @@
 import CommentCard from './CommentCard';
 import '../../styles/CommentThread.scss';
 
-export default function CommentThread({ comments, setIsContentUpdated }) {
+export default function CommentThread({
+  comments,
+  setIsContentUpdated,
+  setPostsUpdated, userData
+}) {
   return (
     <>
       <div className='CommentThread'>
@@ -21,6 +25,8 @@ export default function CommentThread({ comments, setIsContentUpdated }) {
             commentId={comment._id}
             timePosted={comment.createdAt}
             setIsContentUpdated={setIsContentUpdated}
+            setPostsUpdated={setPostsUpdated}
+            userData={userData}
           ></CommentCard>
         ))}
       </div>

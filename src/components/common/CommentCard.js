@@ -10,7 +10,7 @@ import ProfilePicture from './ProfilePicture';
 import '../../styles/CommentCard.scss';
 import blankPic from '../../assets/placeholder-profile-picture.png';
 
-import { PostLikes } from './PostLikes';
+import { CommentLikes } from './CommentLikes';
 
 export default function CommentCard({
   text,
@@ -22,8 +22,10 @@ export default function CommentCard({
   isDeleted,
   deletedComments,
   setIsContentUpdated,
+  setPostsUpdated,
   userId,
   timePosted,
+  userData,
   parentCommentId
 }) {
   const [isLoggedIn] = useAuthenticated();
@@ -32,6 +34,7 @@ export default function CommentCard({
     text: ''
   });
   const [cloudinaryImageId, setCloudinaryImageId] = useState(null);
+  const timestamp = new Date(timePosted).toLocaleString();
 
   useEffect(() => {
     if (userId && !isDeleted) {
@@ -42,10 +45,8 @@ export default function CommentCard({
         .catch(({ message, response }) => {
           console.error(message, response);
         });
-    }
+    } /* eslint-disable-next-line */
   }, [userId]);
-
-  const timestamp = new Date(timePosted).toLocaleString();
 
   const handleNewReplyChange = (event) => {
     setNewReplyFormFields({ [event.target.name]: event.target.value });
@@ -59,7 +60,6 @@ export default function CommentCard({
       API.getHeaders()
     )
       .then(({ data }) => {
-        console.log(data);
         console.log('Posted comment');
         setIsContentUpdated(true);
         NOTIFY.SUCCESS('Posted your reply!');
@@ -80,7 +80,6 @@ export default function CommentCard({
   const handleDeleteComment = () => {
     API.DELETE(API.ENDPOINTS.singleComment(commentId), API.getHeaders())
       .then(({ data }) => {
-        console.log(data);
         console.log('Deleted comment');
         setIsContentUpdated(true);
         NOTIFY.SUCCESS('Comment was deleted.');
@@ -102,8 +101,8 @@ export default function CommentCard({
                 imageWidth={30}
                 imageHeight={30}
               />
-            ) : (
-              <img src={blankPic} alt='blank profile picture' />
+            ) : ( 
+              <img src={blankPic} alt='blank profile avatar' />
             )}
           </div>
           {username && (
@@ -125,8 +124,16 @@ export default function CommentCard({
               <p className='comment-text'>{text}</p>
               {username && (
                 <p>
-                  Likes: {likes}, Dislikes: {dislikes}
-                  <PostLikes />
+                  {/* Likes: {likes}, Dislikes: {dislikes} */}
+                  <CommentLikes
+                    storedLikes={likes}
+                    storedDislikes={dislikes}
+                    id={commentId}
+                    setIsContentUpdated={setIsContentUpdated}
+                    setPostsUpdated={setPostsUpdated}
+                    userData={userData}
+                    isButtonDisabled={false}
+                  />
                 </p>
               )}
               {username && isLoggedIn && (

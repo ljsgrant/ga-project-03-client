@@ -9,7 +9,6 @@ import { PostAdd } from '@mui/icons-material';
 export default function EditPost() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const [testText, setTestText] = useState('Some Test Text');
   const [singlePost, setSinglePost] = useState({
     topic: '',
     content: ''
@@ -40,7 +39,6 @@ export default function EditPost() {
 
   const handleTick = (e) => {
     setTick(!tick);
-    console.log(tick);
   };
 
   const handleSubmit = (e) => {

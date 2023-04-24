@@ -7,7 +7,7 @@ import { AUTH } from '../lib/auth';
 import { DisplayAllPosts } from './DisplayAllPosts';
 import DefaultLandingComponent from './DefaultLandingComponent';
 
-import { Grid, Box, Button } from '@mui/material';
+import { Box, Button } from '@mui/material';
 
 import '../styles/PostsIndex.scss';
 
@@ -21,7 +21,6 @@ export default function PostsIndex() {
     API.GET(API.ENDPOINTS.allPosts)
       .then(({ data }) => {
         setPosts(data);
-        console.log(data);
       })
       .catch(({ message, response }) => {
         NOTIFY.ERROR(message);
@@ -32,7 +31,6 @@ export default function PostsIndex() {
       API.GET(API.ENDPOINTS.singleUser(AUTH.getPayload().userId))
         .then(({ data }) => {
           setUserData(data);
-          console.log(data);
         })
         .catch(({ message, response }) => {
           NOTIFY.ERROR(message);
@@ -53,7 +51,6 @@ export default function PostsIndex() {
   return (
     <div
       className='PostsIndex'
-      // sx={{ width: '100%', display: 'flex', flexDirection: 'row' }}
     >
       <div className='grid-left'>
         <>
